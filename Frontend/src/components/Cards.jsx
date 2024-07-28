@@ -4,12 +4,12 @@ const Cards = ({ item }) => {
   //console.log(item);
   return (
     <>
-      <div className="mt-4 ">
-        <div className="card bg-base-100 w-64 shadow-xl flex flex-wrap gap-4 hover:scale-105 duration-300">
+      <div className="mt-4">
+        <div className="card bg-base-100 w-64 shadow-xl flex flex-wrap gap-4 hover:scale-105 duration-300 ">
           <figure>
             <img src={item.image} alt={item.name} />
           </figure>
-          <div className="card-body ">
+          <div className="card-body dark:bg-slate-900 dark:text-white">
             <h2 className="card-title">
               {item.name}
               <div className="badge badge-secondary"> {item.category}</div>
