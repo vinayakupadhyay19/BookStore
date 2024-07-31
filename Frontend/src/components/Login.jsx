@@ -14,7 +14,7 @@ const Login = () => {
           </form>
           <h3 className="font-bold text-2xl text-pink-500">Login</h3>
           {/*Email */}
-          <div className="mt-5 space-y-2">
+          <div className="mt-5 space-y-2 dark:bg-slate-600 dark:text-black">
             <span>Email</span>
             <br />
             <input
@@ -24,7 +24,7 @@ const Login = () => {
             />
           </div>
           {/*Password */}
-          <div className="mt-5 space-y-2">
+          <div className="mt-5 space-y-2 dark:bg-slate-600 dark:text-black">
             <span>Password</span>
             <br />
             <input
@@ -40,7 +40,10 @@ const Login = () => {
             </button>
             <p>
               Not registered?{" "}
-              <Link className="underline text-blue-500 cursor-pointer">
+              <Link
+                to="/signup"
+                className="underline text-blue-500 cursor-pointer"
+              >
                 Signup
               </Link>
             </p>
