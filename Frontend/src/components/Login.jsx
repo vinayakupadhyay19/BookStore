@@ -1,16 +1,30 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 const Login = () => {
+  const [clickFlag, setClickFlag] = useState(false);
+
+  useEffect(() => {
+    if (clickFlag === true) {
+      window.location.reload();
+      setClickFlag(false);
+    }
+  }, [clickFlag]);
+
   return (
     <div>
       <dialog id="my_modal_3" className="modal">
         <div className="modal-box dark:bg-slate-600 dark:text-white">
           <form method="dialog">
             {/* if there is a button in form, it will close the modal */}
-            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+            <Link
+              to="/"
+              className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+              onClick={() => setClickFlag(!this.clickFlag)}
+            >
               ✕
-            </button>
+            </Link>
           </form>
           <h3 className="font-bold text-2xl text-pink-500">Login</h3>
           {/*Email */}
@@ -43,6 +57,7 @@ const Login = () => {
               <Link
                 to="/signup"
                 className="underline text-blue-500 cursor-pointer"
+                onClick={() => setClickFlag(!this.clickFlag)}
               >
                 Signup
               </Link>

@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
@@ -54,7 +54,12 @@ const CreateUser = () => {
             </button>
             <p>
               Have Account?{" "}
-              <Link to="/" className="underline text-blue-500 cursor-pointer">
+              <Link
+                onClick={() =>
+                  document.getElementById("my_modal_3").showModal()
+                }
+                className="underline text-blue-500 cursor-pointer"
+              >
                 Login
               </Link>
             </p>
