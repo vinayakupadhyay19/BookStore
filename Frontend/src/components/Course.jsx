@@ -6,8 +6,8 @@ const Course = () => {
   //console.log(list);
   return (
     <>
-      <div className="max-w-screen-2xl container mx-auto md:px-20">
-        <div className="mt-28 items-center justify-center text-center">
+      <div className="max-w-screen-2xl container mt-64px">
+        <div className="items-center justify-center text-center">
           <h1 className="text-2xl font-bold md:4xl">
             We're delighted to have you{" "}
             <span className="text-pink-500 "> here! :)</span>
