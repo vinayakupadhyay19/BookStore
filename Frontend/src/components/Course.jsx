@@ -6,7 +6,7 @@ const Course = () => {
   //console.log(list);
   return (
     <>
-      <div className="max-w-screen-2xl container mt-64px">
+      <div className="max-w-screen-2xl container mt-16 px-5 py-5">
         <div className="items-center justify-center text-center">
           <h1 className="text-2xl font-bold md:4xl">
             We're delighted to have you{" "}
