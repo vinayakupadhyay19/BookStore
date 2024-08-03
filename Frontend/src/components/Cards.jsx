@@ -4,7 +4,7 @@ const Cards = ({ item }) => {
   //console.log(item);
   return (
     <>
-      <div className="mt-4">
+      <div className="mt-4 w-80 ml-auto mr-auto">
         <div className="card bg-base-100 w-64 shadow-xl flex flex-wrap gap-4 hover:scale-105 duration-300 ">
           <figure>
             <img src={item.image} alt={item.name} />

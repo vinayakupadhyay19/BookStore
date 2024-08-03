@@ -9,8 +9,8 @@ const Contact = () => {
     watch,
     formState: { errors },
   } = useForm();
-  //const onSubmit = (data) =>
-  //localStorage.setItem("UserData", JSON.stringify(data));
+  const onSubmit = (data) =>
+    localStorage.setItem("UserData", JSON.stringify(data));
 
   return (
     <>
