@@ -2,6 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const db = require("./db.js");
 const bookRoute = require("./route/bookRoute.js");
+const userRoute = require("./route/userRoute.js");
 const cors = require("cors");
 
 const app = express();
@@ -20,6 +21,8 @@ app.get("/", (req, res) => {
 
 //defining book router
 app.use("/book", bookRoute);
+//defining user router
+app.use("/user", userRoute);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, (err) => {
