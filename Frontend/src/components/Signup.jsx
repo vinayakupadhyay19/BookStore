@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { useForm } from "react-hook-form";
+import axios from "axios";
 
 const CreateUser = () => {
   const {
@@ -11,7 +12,27 @@ const CreateUser = () => {
     watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+    console.log(data);
+    const userInfo = {
+      FullName: data.FullName,
+      Email: data.Email,
+      Password: data.Password,
+    };
+
+    await axios
+      .post("http://localhost:3001/user/signup", userInfo)
+      .then((res) => {
+        console.log(res.data);
+        if (res.data) {
+          alert("Login successful :)");
+        }
+      })
+      .catch((err) => {
+        console.log(err.message);
+        alert("Error: " + err.message);
+      });
+  };
 
   return (
     <>
@@ -33,10 +54,10 @@ const CreateUser = () => {
                 type="text"
                 placeholder="Enter your full name"
                 className="w-80 px-3 py-1 border rounded-md outline-none"
-                {...register("name", { required: true })}
+                {...register("FullName", { required: true })}
               />
               <br />
-              {errors.name && (
+              {errors.FullName && (
                 <span className="text-red-400">This field is required</span>
               )}
             </div>
@@ -48,10 +69,10 @@ const CreateUser = () => {
                 type="email"
                 placeholder="Enter your email"
                 className="w-80 px-3 py-1 border rounded-md outline-none"
-                {...register("email", { required: true })}
+                {...register("Email", { required: true })}
               />
               <br />
-              {errors.email && (
+              {errors.Email && (
                 <span className="text-red-400">This field is required</span>
               )}
             </div>
@@ -63,10 +84,10 @@ const CreateUser = () => {
                 type="Password"
                 placeholder="Password"
                 className="w-80 px-3 py-1 border rounded-md outline-none"
-                {...register("password", { required: true })}
+                {...register("Password", { required: true })}
               />
               <br />
-              {errors.password && (
+              {errors.Password && (
                 <span className="text-red-400">This field is required</span>
               )}
             </div>
