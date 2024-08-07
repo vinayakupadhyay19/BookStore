@@ -4,7 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import Courses from "./courses/Courses";
 import CreateUser from "./components/Signup";
 import Contact from "./components/Contact";
-
+import { Toaster } from "react-hot-toast";
 const App = () => {
   return (
     <>
@@ -17,6 +17,7 @@ const App = () => {
           <Route path="/signup" element={<CreateUser />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
+        <Toaster />
       </div>
     </>
   );

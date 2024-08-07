@@ -2,7 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-
+import axios from "axios";
+import toast from "react-hot-toast";
 const Login = () => {
   const {
     register,
@@ -10,7 +11,29 @@ const Login = () => {
     watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+    console.log(data);
+    const userInfo = {
+      Email: data.Email,
+      Password: data.Password,
+    };
+    await axios
+      .post("http://localhost:3001/user/login", userInfo)
+      .then((res) => {
+        console.log(res.data);
+        if (res.data) {
+          toast.success("Login Succesful :)");
+        }
+        localStorage.setItem("User", JSON.stringify(res.data.user));
+      })
+      .catch((err) => {
+        if (err.response) {
+          //console.log(err.response.data);
+
+          toast.error("Error: " + err.response.data.message);
+        }
+      });
+  };
 
   const [clickFlag, setClickFlag] = useState(false);
 
@@ -43,10 +66,10 @@ const Login = () => {
                 type="email"
                 placeholder="Enter your email"
                 className="w-80 px-3 py-1 border rounded-md outline-none"
-                {...register("email", { required: true })}
+                {...register("Email", { required: true })}
               />
               <br />
-              {errors.email && (
+              {errors.Email && (
                 <span className="text-red-400">This field is required</span>
               )}
             </div>
@@ -58,10 +81,10 @@ const Login = () => {
                 type="Password"
                 placeholder="Password"
                 className="w-80 px-3 py-1 border rounded-md outline-none"
-                {...register("password", { required: true })}
+                {...register("Password", { required: true })}
               />
               <br />
-              {errors.password && (
+              {errors.Password && (
                 <span className="text-red-400">This field is required</span>
               )}
             </div>

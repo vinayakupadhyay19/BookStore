@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const CreateUser = () => {
   const {
@@ -19,19 +20,30 @@ const CreateUser = () => {
       Email: data.Email,
       Password: data.Password,
     };
+    console.log(userInfo.Password);
+    if (userInfo.Password.length >= 8) {
+      await axios
+        .post("http://localhost:3001/user/signup", userInfo)
+        .then((res) => {
+          console.log(res.data);
+          if (res.data) {
+            toast.success("Signup Succesful :)");
+          }
+          localStorage.setItem("User", JSON.stringify(res.data.user));
+        })
+        .catch((err) => {
+          if (err.response) {
+            //console.log(err.response.data);
 
-    await axios
-      .post("http://localhost:3001/user/signup", userInfo)
-      .then((res) => {
-        console.log(res.data);
-        if (res.data) {
-          alert("Login successful :)");
-        }
-      })
-      .catch((err) => {
-        console.log(err.message);
-        alert("Error: " + err.message);
-      });
+            toast.error("Error: " + err.response.data.message);
+          }
+        });
+    } else {
+      toast.error(
+        "Password must be at least 8 size Entered Password : " +
+          userInfo.Password
+      );
+    }
   };
 
   return (
