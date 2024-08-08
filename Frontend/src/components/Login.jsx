@@ -23,7 +23,7 @@ const Login = () => {
         console.log(res.data);
         if (res.data) {
           toast.success("Login Succesful :)");
-
+          document.getElementById("my_modal_3").close();
           setTimeout(() => {
             window.location.href = "/";
           }, 1200);
@@ -32,9 +32,8 @@ const Login = () => {
       })
       .catch((err) => {
         if (err.response) {
-          //console.log(err.response.data);
-
           toast.error("Error: " + err.response.data.message);
+          setTimeout(() => {}, 1200);
         }
       });
   };

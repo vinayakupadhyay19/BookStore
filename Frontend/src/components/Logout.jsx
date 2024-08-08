@@ -12,11 +12,13 @@ const Logout = () => {
       });
       localStorage.removeItem("User");
       toast.success("Logged out successfully");
+
       setTimeout(() => {
         window.location.reload();
       }, 1200);
     } catch (err) {
       toast.error("Couldn't log out");
+      setTimeout(() => {}, 1200);
     }
   };
   return (
