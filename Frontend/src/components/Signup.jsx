@@ -28,7 +28,9 @@ const CreateUser = () => {
           console.log(res.data);
           if (res.data) {
             toast.success("Signup Succesful :)");
-            window.location.href = "/";
+            setTimeout(() => {
+              window.location.href = "/";
+            }, 1200);
           }
           localStorage.setItem("User", JSON.stringify(res.data.user));
         })
