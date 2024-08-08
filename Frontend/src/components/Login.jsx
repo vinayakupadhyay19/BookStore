@@ -23,6 +23,10 @@ const Login = () => {
         console.log(res.data);
         if (res.data) {
           toast.success("Login Succesful :)");
+
+          setTimeout(() => {
+            window.location.href = "/";
+          }, 1200);
         }
         localStorage.setItem("User", JSON.stringify(res.data.user));
       })
